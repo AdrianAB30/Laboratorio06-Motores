@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce148ca6448b3e740b9445ec75ed6dc4, type: 3}
+  m_Name: Sounds Rooms 3
+  m_EditorClassIdentifier: 
+  soundRoom: {fileID: 8300000, guid: 35d2603ac89a5e24d896c00cf334a77b, type: 3}
