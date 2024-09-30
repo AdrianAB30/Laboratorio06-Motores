@@ -5067,11 +5067,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1943f8d2e5fc0004bbf369f7355e0be9,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1144221712}
+      addedObject: {fileID: 1144221713}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1943f8d2e5fc0004bbf369f7355e0be9,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1144221713}
+      addedObject: {fileID: 1144221714}
   m_SourcePrefab: {fileID: 100100000, guid: 1943f8d2e5fc0004bbf369f7355e0be9, type: 3}
 --- !u!4 &1144221706 stripped
 Transform:
@@ -5163,7 +5163,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1144221712}
+      - m_Target: {fileID: 1144221714}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnMovement
         m_Mode: 0
@@ -5182,19 +5182,6 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1144221712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144221707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddf4cf6f445599e48ab0ad3d3d5b00d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
 --- !u!82 &1144221713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5292,6 +5279,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1144221714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144221707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf4cf6f445599e48ab0ad3d3d5b00d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
 --- !u!1 &1171114080
 GameObject:
   m_ObjectHideFlags: 0
@@ -7796,7 +7796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionsButton: {fileID: 287447499}
   optionsPanel: {fileID: 944529742}
-  playerController: {fileID: 1144221712}
+  playerController: {fileID: 1144221714}
   cameraPlayer: {fileID: 1299017883}
   teleporter: {fileID: 1028559615}
 --- !u!4 &2037559757
