@@ -12,6 +12,19 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
     private float volume;
+    public static AudioManager Instance { get; set; }
+
+    private void Awake()
+    {
+        if(Instance != null && Instance != this)
+        {
+            DontDestroyOnLoad(Instance);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     private void Start()
     {

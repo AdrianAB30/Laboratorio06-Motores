@@ -8,6 +8,7 @@ TagManager:
   - Room2
   - Teleporter
   - Teleporter2
+  - NPC
   layers:
   - Default
   - TransparentFX

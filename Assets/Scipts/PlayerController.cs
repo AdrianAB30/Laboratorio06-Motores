@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour
             movement = context.ReadValue<Vector2>() * speed;
         }
     }
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+
+    }
     public void AudioWalking()
     {
         if (movement.magnitude > 0 && canMove)

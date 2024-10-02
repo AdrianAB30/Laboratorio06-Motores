@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Audio Settings", menuName = "ScriptableObjects/Audio Settings", order = 1)]
+[CreateAssetMenu(fileName = "Audio Settings", menuName = "ScriptableObjectsAudio/Audio Settings", order = 1)]
 
 public class SOs_AudioSettings : ScriptableObject
 {
