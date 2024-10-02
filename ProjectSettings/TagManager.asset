@@ -9,6 +9,7 @@ TagManager:
   - Teleporter
   - Teleporter2
   - NPC
+  - Puntos
   layers:
   - Default
   - TransparentFX

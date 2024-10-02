@@ -6,18 +6,39 @@ using UnityEngine.InputSystem;
 
 public class NPC_Controller : MonoBehaviour
 {
+    [SerializeField] private Animator _animation;
     [SerializeField] private SOs_DataNpc npcData;
+    [SerializeField] private Transform[] pointsPatrol;
+    private Transform currentPatrol;
+    private Transform lastPatrol;
+    private int patrolIndex = 0;
+    private Vector3 movementNPC;
     [SerializeField] private GameObject dialogueMark;
     [SerializeField] private GameObject panelDialogue;
     [SerializeField] private TMP_Text textDialogue;
     private float typingTime = 0.03f;
     private bool isPlayerInRange;
     private bool dialogueStart;
+    private bool npcCanMove;
     private int lineIndexDialogue;
-    public bool IsDialogueActive => dialogueStart;
 
+    private void Awake()
+    {
+        _animation = GetComponent<Animator>();
+    }
+    private void Start()
+    {
+        currentPatrol = pointsPatrol[patrolIndex];
+        transform.position = currentPatrol.position;
+        lastPatrol = currentPatrol;
+    }
     private void Update()
     {
+        if (npcCanMove)
+        {
+            NpcPatrol();
+            AnimationNPC();
+        }
         if(isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
             if(!dialogueStart)
@@ -37,7 +58,14 @@ public class NPC_Controller : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Puntos"))
+        {
+            npcCanMove = true;
+            _animation.SetFloat("Speed", npcData.velocity);
+            StartCoroutine(DelayNPC());
+            MoveNextPatrol();        
+        }
+        else if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
             dialogueMark.SetActive(true);
@@ -49,6 +77,45 @@ public class NPC_Controller : MonoBehaviour
         {
             isPlayerInRange = false;
             dialogueMark.SetActive(false);
+        }
+    }
+    private void NpcPatrol()
+    {
+        movementNPC = (currentPatrol.position - transform.position).normalized;
+        transform.position = Vector3.MoveTowards(transform.position, currentPatrol.position, npcData.velocity * Time.deltaTime);
+
+        if(Vector3.Distance(transform.position,currentPatrol.position) < 0.2f)
+        {
+            StartCoroutine(DelayNPC());
+            MoveNextPatrol();
+            npcCanMove = false;
+        }
+    }
+    private void MoveNextPatrol()
+    {
+        lastPatrol = currentPatrol;
+        patrolIndex = (patrolIndex + 1) % pointsPatrol.Length;
+        currentPatrol = pointsPatrol[patrolIndex];
+    }
+    private void RotatePatrol()
+    {
+        Vector3 target = (currentPatrol.position - transform.position).normalized;
+        if (target != Vector3.zero)
+        {
+            Quaternion rotation = Quaternion.LookRotation(target);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 6f);
+        }
+    }
+    private void AnimationNPC()
+    {
+        if (npcCanMove)
+        {
+            float movementVelocityNpc = npcData.velocity;
+            _animation.SetFloat("Speed", movementVelocityNpc);
+        }
+        else
+        {
+            _animation.SetFloat("Speed", 0f);
         }
     }
     public void OnInteract()
@@ -82,5 +149,11 @@ public class NPC_Controller : MonoBehaviour
             textDialogue.text += ch;
             yield return new WaitForSeconds(typingTime);
         }
+    }
+    private IEnumerator DelayNPC()
+    {
+        yield return new WaitForSeconds(npcData.patrolStopDuration);
+        MoveNextPatrol();
+        npcCanMove = true;
     }
 }

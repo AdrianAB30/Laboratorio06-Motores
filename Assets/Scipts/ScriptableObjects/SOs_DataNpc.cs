@@ -6,7 +6,6 @@ using UnityEngine;
 public class SOs_DataNpc : ScriptableObject
 {
     public float velocity;
-    public Transform[] checkpointsPatrol;
     public float interactionPlayerDuration;
     public float patrolStopDuration;
     [TextArea(4,6)] public string[] dialogueLines;
