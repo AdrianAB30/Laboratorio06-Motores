@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf065710d127d004e88b93f74a1208ba, type: 3}
   m_Name: NPCDataMordecai
   m_EditorClassIdentifier: 
-  velocity: 10
-  interactionPlayerDuration: 0
-  patrolStopDuration: 5
+  velocity: 8
+  patrolStopDuration: 3
   dialogueLines:
   - "MORDECAI: \xA1Hola Viejo! De casualidad no has visto al mapache por algun lado?"
   - 'MORDECAI: A si que no lo has visto, que raro ese jugueton siempre para por aqui.'

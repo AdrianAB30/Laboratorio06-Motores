@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf065710d127d004e88b93f74a1208ba, type: 3}
+  m_Name: NPCData Vegas
+  m_EditorClassIdentifier: 
+  velocity: 6
+  patrolStopDuration: 3
+  dialogueLines:
+  - "\xA1Oye, anciano! \xBFViste mi almuerzo? Creo que se escapo a la nevera. \xA1Es
+    un ninja de los sandwiches!\""
+  - "\xBFPor qu\xE9 los caramelos no tienen patas? \xA1Seria genial verlos correr
+    y esconderse de mi!"

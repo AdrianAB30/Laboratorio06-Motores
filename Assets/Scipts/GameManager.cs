@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowOptions()
     {
+        Debug.Log("Click en Options");
         optionsPanel.gameObject.SetActive(true);
         playerController.SetCanMove(false);
         DisableCameraControl();

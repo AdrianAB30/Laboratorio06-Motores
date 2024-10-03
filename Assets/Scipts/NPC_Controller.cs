@@ -6,21 +6,27 @@ using UnityEngine.InputSystem;
 
 public class NPC_Controller : MonoBehaviour
 {
+    [Header("NPC Data")]
     [SerializeField] private Animator _animation;
     [SerializeField] private SOs_DataNpc npcData;
+    private Vector3 movementNPC;
+    [Header("Patrol Objects and Data")]
     [SerializeField] private Transform[] pointsPatrol;
+    [SerializeField] private Transform playerTransform;
     private Transform currentPatrol;
     private Transform lastPatrol;
     private int patrolIndex = 0;
-    private Vector3 movementNPC;
+    [Header("UI Dialogue")]
     [SerializeField] private GameObject dialogueMark;
     [SerializeField] private GameObject panelDialogue;
     [SerializeField] private TMP_Text textDialogue;
+    [Header("Dialogue Data")]
     private float typingTime = 0.03f;
+    private int lineIndexDialogue;
+    [Header("Booleanos")]
     private bool isPlayerInRange;
     private bool dialogueStart;
-    private bool npcCanMove;
-    private int lineIndexDialogue;
+    private bool npcCanMove = true;
 
     private void Awake()
     {
@@ -34,12 +40,17 @@ public class NPC_Controller : MonoBehaviour
     }
     private void Update()
     {
-        if (npcCanMove)
+        if (!dialogueStart && npcCanMove)
         {
             NpcPatrol();
             AnimationNPC();
         }
-        if(isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        else if (dialogueStart)
+        {
+            RotateNpcToPlayer();
+            _animation.SetFloat("Speed", 0f);
+        }
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
             if(!dialogueStart)
             {
@@ -60,10 +71,9 @@ public class NPC_Controller : MonoBehaviour
     {
         if (other.CompareTag("Puntos"))
         {
-            npcCanMove = true;
-            _animation.SetFloat("Speed", npcData.velocity);
-            StartCoroutine(DelayNPC());
-            MoveNextPatrol();        
+            npcCanMove = false;
+            _animation.SetFloat("Speed",0f);
+            StartCoroutine(DelayNPC());    
         }
         else if (other.CompareTag("Player"))
         {
@@ -82,12 +92,12 @@ public class NPC_Controller : MonoBehaviour
     private void NpcPatrol()
     {
         movementNPC = (currentPatrol.position - transform.position).normalized;
+        RotatePatrol();
         transform.position = Vector3.MoveTowards(transform.position, currentPatrol.position, npcData.velocity * Time.deltaTime);
 
         if(Vector3.Distance(transform.position,currentPatrol.position) < 0.2f)
         {
             StartCoroutine(DelayNPC());
-            MoveNextPatrol();
             npcCanMove = false;
         }
     }
@@ -104,6 +114,15 @@ public class NPC_Controller : MonoBehaviour
         {
             Quaternion rotation = Quaternion.LookRotation(target);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 6f);
+        }
+    }
+    private void RotateNpcToPlayer()
+    {
+        Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
+        if (directionToPlayer != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 6f);
         }
     }
     private void AnimationNPC()
@@ -123,6 +142,10 @@ public class NPC_Controller : MonoBehaviour
         dialogueStart = true;
         panelDialogue.SetActive(true);
         dialogueMark.SetActive(false);
+        npcCanMove = false;
+        //_animation.SetFloat("Speed", 0f);
+        _animation.SetBool("isTalking",true);
+        RotateNpcToPlayer();
         lineIndexDialogue = 0;
         StartCoroutine(ShowLine());
     }
@@ -138,6 +161,10 @@ public class NPC_Controller : MonoBehaviour
             dialogueStart=false;
             panelDialogue.SetActive(false);
             dialogueMark.SetActive(true);
+            _animation.SetBool("isTalking",false);
+            _animation.SetFloat("Speed", npcData.velocity);
+            npcCanMove = true;
+            MoveNextPatrol();
         }
     }
     private IEnumerator ShowLine()
@@ -152,8 +179,11 @@ public class NPC_Controller : MonoBehaviour
     }
     private IEnumerator DelayNPC()
     {
+        npcCanMove = false;
+        _animation.SetFloat("Speed", 0f);
         yield return new WaitForSeconds(npcData.patrolStopDuration);
         MoveNextPatrol();
-        npcCanMove = true;
+        _animation.SetFloat("Speed", npcData.velocity);
+        npcCanMove =true;
     }
 }
