@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 using UnityEngine.InputSystem;
 
 public class NPC_Controller : MonoBehaviour
@@ -49,23 +50,7 @@ public class NPC_Controller : MonoBehaviour
         {
             RotateNpcToPlayer();
             _animation.SetFloat("Speed", 0f);
-        }
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
-        {
-            if(!dialogueStart)
-            {
-                OnInteract();
-            }
-            else if(textDialogue.text == npcData.dialogueLines[lineIndexDialogue])
-            {
-                NextDialogue();
-            }
-            else
-            {
-                StopAllCoroutines();
-                textDialogue.text = npcData.dialogueLines[lineIndexDialogue];
-            }
-        }
+        }      
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -88,6 +73,26 @@ public class NPC_Controller : MonoBehaviour
             isPlayerInRange = false;
             dialogueMark.SetActive(false);
         }
+    }
+    public void OnInteractWithPlayer(InputAction.CallbackContext context) 
+    { 
+        if(context.performed && isPlayerInRange)
+        {
+            if (!dialogueStart)
+            {
+                StartDialogue();
+            }
+            else if (textDialogue.text == npcData.dialogueLines[lineIndexDialogue])
+            {
+                NextDialogue();
+            }
+            else
+            {
+                StopAllCoroutines();
+                textDialogue.text = npcData.dialogueLines[lineIndexDialogue];
+            }
+        }
+
     }
     private void NpcPatrol()
     {
@@ -137,14 +142,13 @@ public class NPC_Controller : MonoBehaviour
             _animation.SetFloat("Speed", 0f);
         }
     }
-    public void OnInteract()
+    private void StartDialogue()
     {
         dialogueStart = true;
         panelDialogue.SetActive(true);
         dialogueMark.SetActive(false);
         npcCanMove = false;
-        //_animation.SetFloat("Speed", 0f);
-        _animation.SetBool("isTalking",true);
+        _animation.SetBool("isTalking", true);
         RotateNpcToPlayer();
         lineIndexDialogue = 0;
         StartCoroutine(ShowLine());

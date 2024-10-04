@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
+using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private bool canMove = true;
     [SerializeField] private float speed;
+    [SerializeField] NPC_Controller currentNPC;
 
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (canMove)  
+        if (canMove)
         {
             myRBD.velocity = new Vector3(movement.x, myRBD.velocity.y, movement.y);
             AudioWalking();
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (canMove) 
+        if (canMove)
         {
             RotatePlayer();
             AnimationWalk();
@@ -55,10 +56,6 @@ public class PlayerController : MonoBehaviour
             movement = context.ReadValue<Vector2>() * speed;
         }
     }
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-
-    }
     public void AudioWalking()
     {
         if (movement.magnitude > 0 && canMove)
@@ -72,7 +69,7 @@ public class PlayerController : MonoBehaviour
         {
             if (audioSource.isPlaying)
             {
-                audioSource.Stop();  
+                audioSource.Stop();
             }
         }
     }
@@ -94,6 +91,24 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("Teleporter2"))
         {
             SceneManager.LoadScene("Nivel1");
+        }
+        else if (other.CompareTag("NPC"))
+        {
+            currentNPC = other.GetComponent<NPC_Controller>();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("NPC"))
+        {
+            currentNPC = null; 
+        }
+    } 
+    public void OnInteractWithNPC(InputAction.CallbackContext context)
+    {
+        if(context.performed && currentNPC != null)
+        {
+            currentNPC.OnInteractWithPlayer(context);
         }
     }
 }

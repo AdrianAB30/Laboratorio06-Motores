@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10163463, g: 0.05266632, b: 0.02329783, a: 1}
+  m_IndirectSpecularColor: {r: 0.101612754, g: 0.052669954, b: 0.023292448, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1889,6 +1889,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_DRIVER_FG_Peter
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c105b161dc3a64a47b6f89b6e3949298,
+        type: 3}
+      propertyPath: m_TagString
+      value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 2305908379898636046, guid: c105b161dc3a64a47b6f89b6e3949298,
         type: 3}
@@ -5601,7 +5606,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1144221714}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnInteract
+        m_MethodName: OnInteractWithNPC
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5728,6 +5733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  currentNPC: {fileID: 0}
 --- !u!1 &1171114080
 GameObject:
   m_ObjectHideFlags: 0

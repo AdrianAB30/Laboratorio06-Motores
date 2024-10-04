@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10163463, g: 0.05266632, b: 0.02329783, a: 1}
+  m_IndirectSpecularColor: {r: 0.101612754, g: 0.052669954, b: 0.023292448, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1257,6 +1257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Big Vegas
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9d7419172350264486504a4fb3f9f5f,
+        type: 3}
+      propertyPath: m_TagString
+      value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: f9d7419172350264486504a4fb3f9f5f,
         type: 3}
@@ -6556,6 +6561,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d191a5d2-d939-4ad3-b5e4-d3687e1943de
     m_ActionName: Gameplay/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 423dd0ee-1faa-434b-b849-053e1a382fe9
+    m_ActionName: Gameplay/Interaction[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Gameplay
@@ -6601,6 +6610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  currentNPC: {fileID: 283517198}
 --- !u!1 &1413265459
 GameObject:
   m_ObjectHideFlags: 0
@@ -9557,6 +9567,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Courage
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5420aa34119990148a217bf246ef08b8,
+        type: 3}
+      propertyPath: m_TagString
+      value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 5420aa34119990148a217bf246ef08b8,
         type: 3}

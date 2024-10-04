@@ -15,7 +15,7 @@ MonoBehaviour:
   velocity: 8
   patrolStopDuration: 3
   dialogueLines:
-  - "MORDECAI: \xA1Hola Viejo! De casualidad no has visto al mapache por algun lado?"
-  - 'MORDECAI: A si que no lo has visto, que raro ese jugueton siempre para por aqui.'
-  - 'MORDECAI: Bueno anciano esta bien ya puedes irte si lo ves dile que necesito
-    hablar con el.'
+  - "\xA1Hola Viejo! De casualidad no has visto al mapache por algun lado?"
+  - A si que no lo has visto, que raro ese jugueton siempre para por aqui.
+  - Bueno anciano esta bien ya puedes irte si lo ves dile que necesito hablar con
+    el.
