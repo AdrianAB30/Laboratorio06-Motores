@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.101612754, g: 0.052669954, b: 0.023292448, a: 1}
+  m_IndirectSpecularColor: {r: 0.10163463, g: 0.05266632, b: 0.02329783, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -275,7 +275,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -958,7 +958,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1279,15 +1279,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f9d7419172350264486504a4fb3f9f5f,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 283517198}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f9d7419172350264486504a4fb3f9f5f,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 283517199}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f9d7419172350264486504a4fb3f9f5f,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 283517200}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f9d7419172350264486504a4fb3f9f5f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 283517201}
   m_SourcePrefab: {fileID: 100100000, guid: f9d7419172350264486504a4fb3f9f5f, type: 3}
 --- !u!4 &283517195 stripped
 Transform:
@@ -1307,29 +1307,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 283517194}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &283517198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 283517196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23db1c3b00b34e044be751a7b5376786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animation: {fileID: 283517197}
-  npcData: {fileID: 11400000, guid: 871f1400666fe2149b5615f9085b7486, type: 2}
-  pointsPatrol:
-  - {fileID: 1438125330}
-  - {fileID: 1030158003}
-  - {fileID: 1912786492}
-  - {fileID: 457406590}
-  playerTransform: {fileID: 1386465735}
-  dialogueMark: {fileID: 561644405}
-  panelDialogue: {fileID: 183901973}
-  textDialogue: {fileID: 1649687335}
 --- !u!65 &283517199
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1349,8 +1326,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 11.324281, y: 9.116435, z: 12.615881}
-  m_Center: {x: 0.73403037, y: 5.2032623, z: 0.9545398}
+  m_Size: {x: 12.839272, y: 9.116435, z: 13.843098}
+  m_Center: {x: -0.023465041, y: 5.2032623, z: 1.568148}
 --- !u!54 &283517200
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1378,6 +1355,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 0
+--- !u!114 &283517201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283517196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23db1c3b00b34e044be751a7b5376786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animation: {fileID: 283517197}
+  npcData: {fileID: 11400000, guid: 871f1400666fe2149b5615f9085b7486, type: 2}
+  pointsPatrol:
+  - {fileID: 1438125330}
+  - {fileID: 1030158003}
+  - {fileID: 1912786492}
+  - {fileID: 457406590}
+  playerTransform: {fileID: 1386465735}
+  dialogueMark: {fileID: 561644405}
+  panelDialogue: {fileID: 183901973}
+  textDialogue: {fileID: 1649687335}
 --- !u!1 &292026515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,7 +1768,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3637,7 +3637,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -6562,7 +6562,19 @@ MonoBehaviour:
     m_ActionId: d191a5d2-d939-4ad3-b5e4-d3687e1943de
     m_ActionName: Gameplay/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1386465741}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnInteractWithNPC
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 423dd0ee-1faa-434b-b849-053e1a382fe9
     m_ActionName: Gameplay/Interaction[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
@@ -6610,7 +6622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  currentNPC: {fileID: 283517198}
+  currentNPC: {fileID: 0}
 --- !u!1 &1413265459
 GameObject:
   m_ObjectHideFlags: 0
@@ -8366,7 +8378,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
